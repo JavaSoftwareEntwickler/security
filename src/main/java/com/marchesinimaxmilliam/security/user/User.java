@@ -1,13 +1,8 @@
 package com.marchesinimaxmilliam.security.user;
 
 import com.marchesinimaxmilliam.security.token.Token;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -27,11 +22,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "_user_seq")
+    @SequenceGenerator(name = "_user_seq", sequenceName = "_user_seq", allocationSize = 1)
     private Integer id;
+
     private String firstname;
+
     private String lastname;
+
+    @Column(unique=true)
     private String email;
+
     private String password;
 
     @Enumerated(EnumType.STRING)

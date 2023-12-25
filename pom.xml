@@ -83,7 +83,17 @@
 			<artifactId>swagger-annotations</artifactId>
 			<version>2.2.19</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.30</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>6.1.1</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

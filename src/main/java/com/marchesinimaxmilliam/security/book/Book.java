@@ -1,10 +1,6 @@
 package com.marchesinimaxmilliam.security.book;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,8 +22,9 @@ import java.time.LocalDateTime;
 public class Book {
 
         @Id
-        @GeneratedValue
-        private Integer id;
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+        @SequenceGenerator(name = "book_seq", sequenceName = "book_seq", allocationSize = 1)
+        public Integer id;
         private String author;
         private String isbn;
 
